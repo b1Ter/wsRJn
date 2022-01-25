@@ -27,6 +27,8 @@ namespace WorldYachts
             FrameManager FrameManager = new FrameManager();
             FrameManager.usedFrame = thisFrame;
             FrameManager.usedFrame.Navigate(new EnterPage());
+
+            Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
     }
 }

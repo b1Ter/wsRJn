@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WorldYachts.Pages.AdminWindowPages;
 
 namespace WorldYachts
 {
@@ -19,9 +20,12 @@ namespace WorldYachts
     /// </summary>
     public partial class AdminWindow : Window
     {
-        public AdminWindow(AppUser user)
+        public AdminWindow()
         {
             InitializeComponent();
+            FrameManager FrameManager = new FrameManager();
+            FrameManager.usedFrame = thisFrame;
+            FrameManager.usedFrame.Navigate(new MenuPage());
         }
     }
 }

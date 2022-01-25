@@ -13,6 +13,7 @@
             <Setter Property="MinWidth" Value="40"/>
             <Setter Property="Background" Value="#FF004165"/>
             <Setter Property="Margin" Value="4,15,4,15"/>
+            <Setter Property="Height" Value="30"/>
         </Style>
         <Style x:Key="btnUsuallySecond" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
@@ -21,6 +22,7 @@
             <Setter Property="MinWidth" Value="20"/>
             <Setter Property="Background" Value="#FF009FDA"/>
             <Setter Property="Margin" Value="4,15,4,15"/>
+            <Setter Property="Height" Value="28"/>
         </Style>
         
         <!-- Styles of TextBoxes -->
@@ -30,6 +32,10 @@
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="MinHeight" Value="20"/>
             <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="MaxWidth" Value="200"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="Margin" Value="4"/>
         </Style>
         
         <!-- Style of TextBlocks -->
@@ -37,6 +43,9 @@
         <Style x:Key="txtSimple" TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="MaxWidth" Value="360"/>
+            <Setter Property="MinWidth" Value="120"/>
         </Style>
         <Style x:Key="txtRedWarning" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>

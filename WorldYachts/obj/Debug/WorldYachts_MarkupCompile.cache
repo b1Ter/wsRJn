@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\App.xaml
-2106296786
+10-484437075
 21750853300
-211769842522
+29-792701501
 18-1163334676
-AuthWindow.xaml;Pages\AuthWindow\EnterPage.xaml;
+AdminWindow.xaml;AuthWindow.xaml;Pages\AdminWindowPages\AccessoryPage.xaml;Pages\AdminWindowPages\EditAccessoryPage.xaml;Pages\AdminWindowPages\EditUserPage.xaml;Pages\AdminWindowPages\MenuPage.xaml;Pages\AdminWindowPages\UserPage.xaml;Pages\AuthWindowPages\AddUserPage.xaml;Pages\AuthWindowPages\ChangePassPage.xaml;Pages\AuthWindowPages\EnterPage.xaml;
 
 False
 

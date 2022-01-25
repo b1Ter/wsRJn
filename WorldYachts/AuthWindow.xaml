@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorldYachts"
-        mc:Ignorable="d"
-        Title="Авторизация" Height="450" Width="800">
+        mc:Ignorable="d" Width="400" Height="600"
+        Title="Авторизация" MinHeight="{Binding ElementName=thisFrame, Path=Content.MinHeight}" 
+        MinWidth="{Binding ElementName=thisFrame, Path=Content.MinWidth}"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Arial">
     <Grid>
         <Frame x:Name="thisFrame" NavigationUIVisibility="Hidden"/>
     </Grid>

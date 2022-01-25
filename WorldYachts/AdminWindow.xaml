@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorldYachts"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="Администрирование" 
+        Height="{Binding ElementName=thisFrame, Path=Content.DesignHeight}"
+        Width="{Binding ElementName=thisFrame, Path=Content.DesignWidth}"
+        MinHeight="{Binding ElementName=thisFrame, Path=Content.MinHeight}" 
+        MinWidth="{Binding ElementName=thisFrame, Path=Content.MinWidth}"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Arial">
     <Grid>
-        
+        <Frame x:Name="thisFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

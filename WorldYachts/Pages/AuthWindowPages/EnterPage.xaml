@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WorldYachts.Pages.AuthWindow"
-      mc:Ignorable="d" 
+      mc:Ignorable="d" MinHeight="300" MinWidth="380"
       d:DesignHeight="300" d:DesignWidth="400"
       Title="EnterPage">
 
@@ -14,53 +14,51 @@
             <RowDefinition Height="80"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-            
+
             <TextBlock Text="Логин: "
                    VerticalAlignment="Center"
                    HorizontalAlignment="Right"
                    Margin="10"/>
-            
+
             <TextBox x:Name="txtLogin"
                  Grid.Column="2"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Center"
                  Height="30" Style="{StaticResource txtBoxUsually}"
                  Width="280"/>
-            
+
         </StackPanel>
 
         <StackPanel Grid.Row="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Orientation="Horizontal">
+                    Orientation="Horizontal" Margin="32,22,30,22" Width="338">
 
             <TextBlock Text="Пароль: " Grid.Row="1"
-                   VerticalAlignment="Center"
+                   VerticalAlignment="Center" Margin="10"
                    HorizontalAlignment="Right"/>
             <PasswordBox x:Name="txtPass"
                  Grid.Column="2" Grid.Row="1"
                  HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 Height="30" Width="280"/>
-            
+                 VerticalAlignment="Center" Width="231" Height="28"/>
+
         </StackPanel>
 
         <StackPanel Grid.Row="3"
                     HorizontalAlignment="Center" VerticalAlignment="Center"
                     Orientation="Vertical">
 
-            <TextBlock x:Name="txtWarning"/>
 
             <Button x:Name="btnEnter" Content="Войти"
                     Style="{StaticResource btnUsuallyMain}"
-                    Click="btnEnter_Click"/>
+                    Click="btnEnter_Click" Width="80"/>
             <Button x:Name="btnNewUser" Content="Новая учётная запись"
                     Style="{StaticResource btnUsuallyMain}"
-                    Click="btnNewUser_Click"/>
+                    Click="btnNewUser_Click" Width="222"/>
 
         </StackPanel>
     </Grid>

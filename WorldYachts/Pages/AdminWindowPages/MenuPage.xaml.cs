@@ -13,16 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WorldYachts.Pages.AuthWindow
+namespace WorldYachts.Pages.AdminWindowPages
 {
     /// <summary>
-    /// Логика взаимодействия для ChangePassPage.xaml
+    /// Логика взаимодействия для MenuPage.xaml
     /// </summary>
-    public partial class ChangePassPage : Page
+    public partial class MenuPage : Page
     {
-        public ChangePassPage(AppUser user)
+        public MenuPage()
         {
             InitializeComponent();
+        }
+        private void btnUser_Click(object sender, RoutedEventArgs e)
+        {
+            FrameManager.usedFrame.Navigate(new UserPage());
+        }
+
+        private void btnAccessory_Click(object sender, RoutedEventArgs e)
+        {
+            FrameManager.usedFrame.Navigate(new AccessoryPage());
         }
     }
 }

@@ -4,20 +4,24 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WorldYachts.Pages.AuthWindow"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d" MinHeight="340" MinWidth="460"
+      d:DesignHeight="340" d:DesignWidth="500"
       Title="ChangePassPage">
 
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <StackPanel
+
+            <TextBlock Text="Срок действия пароля истёк. Введите новый."
+                       Style="{StaticResource txtSimple}"/>
+            <StackPanel Grid.Row="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
@@ -35,7 +39,7 @@
 
             </StackPanel>
             
-            <StackPanel Grid.Row="1"
+            <StackPanel Grid.Row="2"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
@@ -53,7 +57,7 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Row="2"
+            <StackPanel Grid.Row="3"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
@@ -70,9 +74,11 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Row="3"
+            <StackPanel Grid.Row="4"
                     HorizontalAlignment="Center" VerticalAlignment="Center"
                     Orientation="Vertical">
+
+                <TextBlock x:Name="txtWarning" Style="{StaticResource txtRedWarning}"/>
 
                 <Button x:Name="btnEnter" Content="Сохранить"
                     Style="{StaticResource btnUsuallyMain}"

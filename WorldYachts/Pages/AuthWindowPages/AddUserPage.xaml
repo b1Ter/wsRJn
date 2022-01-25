@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WorldYachts.Pages.AuthWindow"
-      mc:Ignorable="d" 
-      d:DesignHeight="360" d:DesignWidth="400"
+      mc:Ignorable="d"  MinHeight="370" MinWidth="390"
+      d:DesignHeight="380" d:DesignWidth="400"
       Title="AddUserPage">
 
     <Grid>
@@ -26,11 +26,9 @@
                    Margin="10"/>
 
             <TextBox x:Name="txtLogin"
-                 Grid.Column="2"
                  HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 Height="30" Style="{StaticResource txtBoxUsually}"
-                 Width="280"/>
+                 VerticalAlignment="Center" Text="{Binding Login}"
+                 Height="30" Width="275"/>
 
         </StackPanel>
 
@@ -71,14 +69,14 @@
 
         <StackPanel Grid.Row="3"
                     HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Orientation="Vertical">
+                    Orientation="Vertical" Width="200">
 
             <Button x:Name="btnRegNewUser" Content="Создать"
                     Style="{StaticResource btnUsuallyMain}"
-                    Click="btnRegNewUser_Click"/>
+                    Click="btnRegNewUser_Click" Width="120"/>
             <Button x:Name="btnBack" Content="Назад"
                     Style="{StaticResource btnUsuallyMain}"
-                    Click="btnBack_Click"/>
+                    Click="btnBack_Click" Width="110"/>
 
         </StackPanel>
     </Grid>
