@@ -36,6 +36,10 @@
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateLastVisit" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="IsAdmittedToForum" Type="Boolean" Nullable="false" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Message" Relationship="bdWorldYachtsModel.FK_Message_AppUser" FromRole="AppUser" ToRole="Message" />
+    <NavigationProperty Name="Theme" Relationship="bdWorldYachtsModel.FK_Theme_AppUser" FromRole="AppUser" ToRole="Theme" />
   </EntityType>
   <EntityType Name="Boat">
     <Key>
@@ -294,5 +298,133 @@
       <End Role="Order" EntitySet="Order" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
     </AssociationSet>
+    <EntitySet Name="Category" EntityType="bdWorldYachtsModel.Category" />
+    <EntitySet Name="Subcategory" EntityType="bdWorldYachtsModel.Subcategory" />
+    <AssociationSet Name="FK_Subcategory_Category" Association="bdWorldYachtsModel.FK_Subcategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Subcategory" EntitySet="Subcategory" />
+    </AssociationSet>
+    <EntitySet Name="Message" EntityType="bdWorldYachtsModel.Message" />
+    <EntitySet Name="Theme" EntityType="bdWorldYachtsModel.Theme" />
+    <AssociationSet Name="FK_Message_AppUser" Association="bdWorldYachtsModel.FK_Message_AppUser">
+      <End Role="AppUser" EntitySet="AppUser" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Theme" Association="bdWorldYachtsModel.FK_Message_Theme">
+      <End Role="Theme" EntitySet="Theme" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Theme_Subcategory" Association="bdWorldYachtsModel.FK_Theme_Subcategory">
+      <End Role="Subcategory" EntitySet="Subcategory" />
+      <End Role="Theme" EntitySet="Theme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Theme_AppUser" Association="bdWorldYachtsModel.FK_Theme_AppUser">
+      <End Role="AppUser" EntitySet="AppUser" />
+      <End Role="Theme" EntitySet="Theme" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Category_ID" />
+    </Key>
+    <Property Name="Category_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Subcategory" Relationship="bdWorldYachtsModel.FK_Subcategory_Category" FromRole="Category" ToRole="Subcategory" />
+  </EntityType>
+  <EntityType Name="Subcategory">
+    <Key>
+      <PropertyRef Name="Subcategory_ID" />
+    </Key>
+    <Property Name="Subcategory_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Category_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="bdWorldYachtsModel.FK_Subcategory_Category" FromRole="Subcategory" ToRole="Category" />
+    <NavigationProperty Name="Theme" Relationship="bdWorldYachtsModel.FK_Theme_Subcategory" FromRole="Subcategory" ToRole="Theme" />
+  </EntityType>
+  <Association Name="FK_Subcategory_Category">
+    <End Type="bdWorldYachtsModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="bdWorldYachtsModel.Subcategory" Role="Subcategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Category_ID" />
+      </Principal>
+      <Dependent Role="Subcategory">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Message_ID" />
+    </Key>
+    <Property Name="Message_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Theme_ID" Type="Int32" Nullable="false" />
+    <Property Name="Content_msg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateMessage" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AppUser" Relationship="bdWorldYachtsModel.FK_Message_AppUser" FromRole="Message" ToRole="AppUser" />
+    <NavigationProperty Name="Theme" Relationship="bdWorldYachtsModel.FK_Message_Theme" FromRole="Message" ToRole="Theme" />
+  </EntityType>
+  <EntityType Name="Theme">
+    <Key>
+      <PropertyRef Name="Theme_ID" />
+    </Key>
+    <Property Name="Theme_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Subcategory_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Message" Relationship="bdWorldYachtsModel.FK_Message_Theme" FromRole="Theme" ToRole="Message" />
+    <NavigationProperty Name="Subcategory" Relationship="bdWorldYachtsModel.FK_Theme_Subcategory" FromRole="Theme" ToRole="Subcategory" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AppUser" Relationship="bdWorldYachtsModel.FK_Theme_AppUser" FromRole="Theme" ToRole="AppUser" />
+  </EntityType>
+  <Association Name="FK_Message_AppUser">
+    <End Type="bdWorldYachtsModel.AppUser" Role="AppUser" Multiplicity="1" />
+    <End Type="bdWorldYachtsModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Theme">
+    <End Type="bdWorldYachtsModel.Theme" Role="Theme" Multiplicity="1" />
+    <End Type="bdWorldYachtsModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theme">
+        <PropertyRef Name="Theme_ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="Theme_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Theme_Subcategory">
+    <End Type="bdWorldYachtsModel.Subcategory" Role="Subcategory" Multiplicity="1" />
+    <End Type="bdWorldYachtsModel.Theme" Role="Theme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategory">
+        <PropertyRef Name="Subcategory_ID" />
+      </Principal>
+      <Dependent Role="Theme">
+        <PropertyRef Name="Subcategory_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Theme_AppUser">
+    <End Type="bdWorldYachtsModel.AppUser" Role="AppUser" Multiplicity="1" />
+    <End Type="bdWorldYachtsModel.Theme" Role="Theme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Theme">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

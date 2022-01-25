@@ -31,6 +31,8 @@
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DateLastVisit" Type="date" Nullable="false" />
     <Property Name="IsBlocked" Type="bit" Nullable="false" />
+    <Property Name="IsAdmittedToForum" Type="bit" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Boat">
     <Key>
@@ -45,6 +47,13 @@
     <Property Name="Wood" Type="nvarchar" MaxLength="255" />
     <Property Name="BasePrice" Type="float" />
     <Property Name="VAT" Type="float" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Category_ID" />
+    </Key>
+    <Property Name="Category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -72,6 +81,16 @@
     <Property Name="Sum" Type="money" />
     <Property Name="Sum_inclVAT" Type="float" />
     <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Message_ID" />
+    </Key>
+    <Property Name="Message_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Theme_ID" Type="int" Nullable="false" />
+    <Property Name="Content_msg" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateMessage" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -110,6 +129,14 @@
     <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
     <Property Name="FamilyName" Type="nvarchar" MaxLength="255" />
   </EntityType>
+  <EntityType Name="Subcategory">
+    <Key>
+      <PropertyRef Name="Subcategory_ID" />
+    </Key>
+    <Property Name="Subcategory_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category_ID" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -119,6 +146,17 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Theme">
+    <Key>
+      <PropertyRef Name="Theme_ID" />
+    </Key>
+    <Property Name="Theme_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subcategory_ID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Accessory_Partner">
     <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
@@ -165,6 +203,30 @@
       </Principal>
       <Dependent Role="Invoice">
         <PropertyRef Name="Contract_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_AppUser">
+    <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Theme">
+    <End Role="Theme" Type="Self.Theme" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theme">
+        <PropertyRef Name="Theme_ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="Theme_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -228,18 +290,58 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Subcategory_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Subcategory" Type="Self.Subcategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Category_ID" />
+      </Principal>
+      <Dependent Role="Subcategory">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Theme_AppUser">
+    <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="Theme" Type="Self.Theme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Theme">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Theme_Subcategory">
+    <End Role="Subcategory" Type="Self.Subcategory" Multiplicity="1" />
+    <End Role="Theme" Type="Self.Theme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategory">
+        <PropertyRef Name="Subcategory_ID" />
+      </Principal>
+      <Dependent Role="Theme">
+        <PropertyRef Name="Subcategory_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Хранилище bdWorldYachtsModelContainer">
     <EntitySet Name="Accessory" EntityType="Self.Accessory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AccToBoats" EntityType="Self.AccToBoats" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AppUser" EntityType="Self.AppUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Boat" EntityType="Self.Boat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalesPerson" EntityType="Self.SalesPerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subcategory" EntityType="Self.Subcategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Theme" EntityType="Self.Theme" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Accessory_Partner" Association="Self.FK_Accessory_Partner">
       <End Role="Partner" EntitySet="Partner" />
       <End Role="Accessory" EntitySet="Accessory" />
@@ -255,6 +357,14 @@
     <AssociationSet Name="FK_Invoice_OrderDetails" Association="Self.FK_Invoice_OrderDetails">
       <End Role="OrderDetails" EntitySet="OrderDetails" />
       <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_AppUser" Association="Self.FK_Message_AppUser">
+      <End Role="AppUser" EntitySet="AppUser" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Theme" Association="Self.FK_Message_Theme">
+      <End Role="Theme" EntitySet="Theme" />
+      <End Role="Message" EntitySet="Message" />
     </AssociationSet>
     <AssociationSet Name="FK_Order_Boat" Association="Self.FK_Order_Boat">
       <End Role="Boat" EntitySet="Boat" />
@@ -275,6 +385,18 @@
     <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
       <End Role="Order" EntitySet="Order" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subcategory_Category" Association="Self.FK_Subcategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Subcategory" EntitySet="Subcategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Theme_AppUser" Association="Self.FK_Theme_AppUser">
+      <End Role="AppUser" EntitySet="AppUser" />
+      <End Role="Theme" EntitySet="Theme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Theme_Subcategory" Association="Self.FK_Theme_Subcategory">
+      <End Role="Subcategory" EntitySet="Subcategory" />
+      <End Role="Theme" EntitySet="Theme" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

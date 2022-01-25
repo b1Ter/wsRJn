@@ -11,4 +11,11 @@ namespace WorldYachts
     {
         public static Frame usedFrame;
     }
+    public class ForumManager
+    {
+        public static Subcategory subcategory;
+
+        public static Frame leftFrame;
+        public static Frame rightFrame;
+    }
 }

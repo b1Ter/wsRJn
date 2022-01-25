@@ -25,6 +25,15 @@
         <AssociationConnector Association="bdWorldYachtsModel.FK_Invoice_OrderDetails" ManuallyRouted="false" />
         <AssociationConnector Association="bdWorldYachtsModel.FK_Order_SalesPerson" ManuallyRouted="false" />
         <AssociationConnector Association="bdWorldYachtsModel.FK_OrderDetails_Order" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="bdWorldYachtsModel.Category" Width="1.5" PointX="6.375" PointY="1" />
+        <EntityTypeShape EntityType="bdWorldYachtsModel.Subcategory" Width="1.5" PointX="8.625" PointY="0.875" />
+        <AssociationConnector Association="bdWorldYachtsModel.FK_Subcategory_Category" />
+        <EntityTypeShape EntityType="bdWorldYachtsModel.Message" Width="1.5" PointX="13.125" PointY="5.125" />
+        <EntityTypeShape EntityType="bdWorldYachtsModel.Theme" Width="1.5" PointX="10.875" PointY="0.875" />
+        <AssociationConnector Association="bdWorldYachtsModel.FK_Message_AppUser" />
+        <AssociationConnector Association="bdWorldYachtsModel.FK_Message_Theme" />
+        <AssociationConnector Association="bdWorldYachtsModel.FK_Theme_Subcategory" />
+        <AssociationConnector Association="bdWorldYachtsModel.FK_Theme_AppUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

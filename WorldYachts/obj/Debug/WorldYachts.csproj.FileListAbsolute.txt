@@ -39,3 +39,11 @@ D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\Pages\AdminWindowPages\Ed
 D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\WorldYachts.csprojAssemblyReference.cache
 D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\Pages\AdminWindowPages\EditAccessoryPage.g.cs
 D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\Pages\AdminWindowPages\EditAccessoryPage.baml
+D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\ForumWindow.g.cs
+D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\Pages\ForumWindowPages\CategoriesPage.g.cs
+D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\Pages\ForumWindowPages\MessagePage.g.cs
+D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\Pages\ForumWindowPages\ThemesPage.g.cs
+D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\ForumWindow.baml
+D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\Pages\ForumWindowPages\CategoriesPage.baml
+D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\Pages\ForumWindowPages\MessagePage.baml
+D:\!!! ws\21.01.2022\WorldYachts\WorldYachts\obj\Debug\Pages\ForumWindowPages\ThemesPage.baml

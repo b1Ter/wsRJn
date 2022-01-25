@@ -36,5 +36,9 @@ namespace WorldYachts
         public virtual DbSet<Partner> Partner { get; set; }
         public virtual DbSet<SalesPerson> SalesPerson { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Subcategory> Subcategory { get; set; }
+        public virtual DbSet<Message> Message { get; set; }
+        public virtual DbSet<Theme> Theme { get; set; }
     }
 }

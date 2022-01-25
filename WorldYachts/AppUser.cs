@@ -14,10 +14,24 @@ namespace WorldYachts
     
     public partial class AppUser
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AppUser()
+        {
+            this.Message = new HashSet<Message>();
+            this.Theme = new HashSet<Theme>();
+        }
+    
         public int User_ID { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public System.DateTime DateLastVisit { get; set; }
         public bool IsBlocked { get; set; }
+        public bool IsAdmittedToForum { get; set; }
+        public bool IsAdmin { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Message> Message { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Theme> Theme { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\App.xaml;;
 FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\AdminWindow.xaml;;
 FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\AuthWindow.xaml;;
+FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\ForumWindow.xaml;;
 FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\AdminWindowPages\AccessoryPage.xaml;;
 FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\AdminWindowPages\EditAccessoryPage.xaml;;
 FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\AdminWindowPages\EditUserPage.xaml;;
@@ -10,4 +11,7 @@ FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\AdminWindowPages\UserPage.xa
 FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\AuthWindowPages\AddUserPage.xaml;;
 FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\AuthWindowPages\ChangePassPage.xaml;;
 FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\AuthWindowPages\EnterPage.xaml;;
+FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\ForumWindowPages\CategoriesPage.xaml;;
+FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\ForumWindowPages\MessagePage.xaml;;
+FD:\!!! ws\21.01.2022\WorldYachts\WorldYachts\Pages\ForumWindowPages\ThemesPage.xaml;;
 

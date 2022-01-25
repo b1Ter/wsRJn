@@ -46,7 +46,7 @@ namespace WorldYachts.Pages.AuthWindow
                         user.DateLastVisit = DateTime.Now.Date;
                         context.SaveChanges();
 
-                        AdminWindow window = new AdminWindow();
+                        ForumWindow window = new ForumWindow();
                         window.Activate();
                         window.Show();
                         Application.Current.MainWindow.Hide();

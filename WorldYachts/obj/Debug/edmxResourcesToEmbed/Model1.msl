@@ -28,6 +28,8 @@
     <EntitySetMapping Name="AppUser">
       <EntityTypeMapping TypeName="bdWorldYachtsModel.AppUser">
         <MappingFragment StoreEntitySet="AppUser">
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="IsAdmittedToForum" ColumnName="IsAdmittedToForum" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
@@ -129,6 +131,46 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="bdWorldYachtsModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subcategory">
+      <EntityTypeMapping TypeName="bdWorldYachtsModel.Subcategory">
+        <MappingFragment StoreEntitySet="Subcategory">
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Subcategory_ID" ColumnName="Subcategory_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message">
+      <EntityTypeMapping TypeName="bdWorldYachtsModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="DateMessage" ColumnName="DateMessage" />
+          <ScalarProperty Name="Content_msg" ColumnName="Content_msg" />
+          <ScalarProperty Name="Theme_ID" ColumnName="Theme_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Theme">
+      <EntityTypeMapping TypeName="bdWorldYachtsModel.Theme">
+        <MappingFragment StoreEntitySet="Theme">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Subcategory_ID" ColumnName="Subcategory_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Theme_ID" ColumnName="Theme_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
